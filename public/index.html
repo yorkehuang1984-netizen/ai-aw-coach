@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AW-AI Coach — 个人 AI 时间助手</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Marked.js：用于渲染 Markdown（周报功能到时候用） -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Chart.js：用于图表（阶段 5 用） -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- 侧边栏 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1>🧠 AW-AI Coach</h1>
+      <p class="subtitle">个人 AI 时间助手</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-view="chat">
+        💬 对话
+      </button>
+      <button class="nav-btn" data-view="weekly" id="btn-weekly">
+        📄 本周周报
+      </button>
+      <button class="nav-btn" data-view="chart" id="btn-chart">
+        ⏱️ 时间分布
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p class="status" id="aw-status">🟢 AW 已连接</p>
+      <p class="version">v1.0 MVP</p>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main">
+    <!-- 对话视图 -->
+    <section class="view active" id="view-chat">
+      <div class="chat-container">
+        <!-- 消息列表 -->
+        <div class="chat-messages" id="chat-messages">
+          <div class="welcome-message">
+            <div class="welcome-icon">🧠</div>
+            <h2>你好！我是你的 AI 时间助手</h2>
+            <p>我能帮你分析电脑使用时间。试试问我：</p>
+            <div class="suggestion-chips">
+              <button class="chip" data-question="我今天用了多久浏览器？">我今天用了多久浏览器？</button>
+              <button class="chip" data-question="今天什么应用用得最多？">今天什么应用用得最多？</button>
+              <button class="chip" data-question="我今天的效率怎么样？">我今天的效率怎么样？</button>
+              <button class="chip" data-question="今天的时间分布">今天的时间分布</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="chat-input-area">
+          <div class="input-row">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="问我关于你时间使用的任何问题……"
+              autocomplete="off"
+            />
+            <button id="btn-send" class="btn-send" title="发送">
+              <span class="send-icon">➤</span>
+            </button>
+          </div>
+          <p class="input-hint">按 Enter 发送 · 试试点击上面的快捷问题</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 周报视图 -->
+    <section class="view" id="view-weekly">
+      <div class="report-container">
+        <div class="report-placeholder">
+          <div class="placeholder-icon">📄</div>
+          <h2>反思周报</h2>
+          <p>点击按钮生成你本周的数字生活报告</p>
+          <button class="btn-primary" id="btn-generate-weekly">✨ 生成本周周报</button>
+          <div class="report-content" id="report-content" style="display:none;"></div>
+          <div class="report-actions" id="report-actions" style="display:none;">
+            <button class="btn-secondary" id="btn-copy">📋 复制</button>
+            <button class="btn-secondary" id="btn-download">💾 下载 .md</button>
+          </div>
+          <div class="loading-spinner" id="weekly-loading" style="display:none;">
+            <div class="spinner"></div>
+            <p>正在分析你本周的数据……</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 时间分布视图 -->
+    <section class="view" id="view-chart">
+      <div class="chart-container">
+        <h2>⏱️ 时间分布</h2>
+
+        <div class="period-selector">
+          <button class="period-btn active" data-period="today">今天</button>
+          <button class="period-btn" data-period="yesterday">昨天</button>
+          <button class="period-btn" data-period="week">本周</button>
+        </div>
+
+        <div class="chart-wrapper">
+          <canvas id="timeChart"></canvas>
+        </div>
+
+        <div class="chart-comment" id="chart-comment">
+          <p>选择一个时间段来查看时间分布</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

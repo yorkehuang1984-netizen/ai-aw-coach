@@ -1,0 +1,23 @@
+{
+  "name": "aw-ai-coach",
+  "version": "1.0.0",
+  "description": "基于 ActivityWatch 本地数据的个人 AI 时间分析助手",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["activitywatch", "deepseek", "time-tracking", "ai-coach", "productivity"],
+  "author": "yorke",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.18.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "openai": "^6.45.0"
+  }
+}
