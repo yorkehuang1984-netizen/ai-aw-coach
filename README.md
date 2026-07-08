@@ -40,10 +40,14 @@
 ### 方式一：一键安装（推荐）
 
 ```bash
-# 双击运行 setup.bat，自动完成：
+# 第一步：双击 setup.bat，自动完成：
 #   1. npm install
 #   2. 编译桌面启动器 (.exe)
 #   3. 创建桌面快捷方式
+
+# 第二步：配置 API Key
+cp .env.example .env
+# 用记事本打开 .env，把 sk-你的key 替换成真实 key
 ```
 
 然后双击桌面的 `AW-AI-Coach` 快捷方式即可。
